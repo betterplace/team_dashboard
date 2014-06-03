@@ -17,7 +17,7 @@ app.config(["$httpProvider", function($httpProvider) {
   $httpProvider.defaults.headers['common']['X-Requested-With'] = 'XMLHttpRequest';
 }]);
 
-app.constant("DASHBOARD_COLUMN_COUNT", 4);
+app.constant("DASHBOARD_COLUMN_COUNT", 5);
 
 // use angular/mustache style {{variable}} interpolation
 _.templateSettings = {
