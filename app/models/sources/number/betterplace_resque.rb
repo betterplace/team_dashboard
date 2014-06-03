@@ -36,9 +36,11 @@ module Sources
         url = widget.settings.fetch(:url)
         queue = widget.settings.fetch(:queue)
 
-        result = ::HttpService.request(url)
-
-        { :value => result['resque'][queue] }
+        result  = ::HttpService.request(url)
+        sidekiq = result['sidekiq']
+        queues  = sidekiq.delete('queues')
+        sidekiq.update(queues)
+        { :value => sidekiq[queue] }
       end
 
     end
