@@ -38,12 +38,12 @@ module Sources
           @account ||= NewRelicApi::Account.find(:first)
         end
 
-        def application
-          @application ||= account.applications.first
+        def betterplace
+          @application ||= account.applications.find { |app| app.name == 'betterplace.org' }
         end
 
         def threshold_value(name)
-          application.threshold_values.find { |tv| tv.name == name }
+          betterplace.threshold_values.find { |tv| tv.name == name }
         end
 
       end
