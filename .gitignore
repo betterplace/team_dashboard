@@ -22,6 +22,9 @@
 .rake_tasks
 /config/database.yml
 
+# Ignore secrets.yml
+/config/secrets.yml
+
 # Ignore net beans project file
 /nbproject
 .project
