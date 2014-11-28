@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p /var/log/team_dashboard/
+exec svlogd -ttt /var/log/team_dashboard/
