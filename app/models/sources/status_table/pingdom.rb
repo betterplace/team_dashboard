@@ -3,7 +3,9 @@ module Sources
     class Pingdom < Sources::StatusTable::Base
 
       def available?
-        BackendSettings.pingdom.enabled?
+        %i(pingdom_user, pingdom_password pingdom_api_key).all? do |key|
+          BackendSettings.secrets.send(key).present?
+        end
       end
 
       def get(options = {})

@@ -21,7 +21,9 @@
 .jhw-cache
 .rake_tasks
 /config/database.yml
-/config/backend_settings.yml
+
+# Ignore secrets.yml
+/config/secrets.yml
 
 # Ignore net beans project file
 /nbproject
