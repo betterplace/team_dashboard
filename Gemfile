@@ -14,7 +14,8 @@ gem 'sqlite3'
 gem "json"
 
 # on windows replace with thin gem
-gem "unicorn"
+#gem "unicorn"
+gem "thin"
 
 gem "faraday"
 gem "faraday_middleware"

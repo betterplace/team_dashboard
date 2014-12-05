@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export HOME="/home/my"
+. "$HOME/.profile"
+export RAILS_ENV="production"
+
+cd "$HOME/scm/team_dashboard"
+exec 2>&1
+exec env chpst -u my bundle exec rails server thin
