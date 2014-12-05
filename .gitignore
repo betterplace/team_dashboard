@@ -30,3 +30,5 @@
 .project
 
 /node_modules
+
+*.sw[pon]
