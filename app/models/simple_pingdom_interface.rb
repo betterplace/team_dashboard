@@ -6,9 +6,9 @@ class SimplePingdomInterface
   attr_accessor :user, :pass, :app_key
 
   def initialize
-    @user = BackendSettings.secrets.pingdom_user
-    @pass = BackendSettings.secrets.pingdom_password
-    @app_key = BackendSettings.secrets.pingdom_api_key
+    @user = BackendSettings.secrets.pingdom.user
+    @pass = BackendSettings.secrets.pingdom.password
+    @app_key = BackendSettings.secrets.pingdom.api_key
   end
 
   def pingdom_url

@@ -3,8 +3,9 @@ module Sources
     class Pingdom < Sources::StatusTable::Base
 
       def available?
-        %i(pingdom_user, pingdom_password pingdom_api_key).all? do |key|
-          BackendSettings.secrets.send(key).present?
+      	pingdom = BackendSettings.secrets.pingdom
+        %w[user password api_key].all? do |key|
+          pingdom.send(:[], key).present?
         end
       end
 
@@ -12,7 +13,6 @@ module Sources
         connection = SimplePingdomInterface.new.make_request
         build_json_response(connection.status_table)
       end
-
     end
   end
 end
