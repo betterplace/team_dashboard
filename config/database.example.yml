@@ -1,19 +1,17 @@
-default: &mysql
-  adapter: mysql2
+default: &sqlite3
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
   timeout: 5000
-  host: localhost
-  username: root
-  password:
 
 development:
-  <<: *mysql
-  database: team_dashboard_development
+  <<: *sqlite3
+  database: db/team_dashboard_development.sqlite3
 
 test:
-  <<: *mysql
-  database: team_dashboard_test
+  <<: *sqlite3
+  database: db/team_dashboard_test.sqlite3
 
 production:
-  <<: *mysql
-  database: team_dashboard_production
+  <<: *sqlite3
+  database: db/team_dashboard_production.sqlite3
