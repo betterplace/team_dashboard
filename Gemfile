@@ -9,7 +9,8 @@ gem "sass-rails", "~> 4.0.0"
 gem "bootstrap-sass", "~> 2.3.2"
 gem "bootswatch-rails"
 
-gem "mysql2"
+gem 'sqlite3'
+#gem "mysql2"
 gem "json"
 
 # on windows replace with thin gem
@@ -37,10 +38,11 @@ group :test, :development do
   gem "mocha", :require => false
 end
 
+
 group :development do
+  gem "foreman"
   gem "better_errors"
   gem "binding_of_caller"
-  gem "foreman"
 end
 
 group :production do
