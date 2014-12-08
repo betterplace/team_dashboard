@@ -3,7 +3,8 @@
 export HOME="/home/my"
 . "$HOME/.profile"
 export RAILS_ENV="production"
+export RACK_PORT=3000
 
 cd "$HOME/scm/team_dashboard"
 exec 2>&1
-exec env chpst -u my bundle exec rails server thin
+exec env chpst -u my bundle exec foreman start
