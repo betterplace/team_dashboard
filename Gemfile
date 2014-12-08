@@ -16,6 +16,7 @@ gem "json"
 # on windows replace with thin gem
 #gem "unicorn"
 gem "thin"
+gem "foreman"
 
 gem "faraday"
 gem "faraday_middleware"
@@ -41,7 +42,6 @@ end
 
 
 group :development do
-  gem "foreman"
   gem "better_errors"
   gem "binding_of_caller"
 end
