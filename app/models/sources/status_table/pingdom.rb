@@ -3,7 +3,7 @@ module Sources
     class Pingdom < Sources::StatusTable::Base
 
       def available?
-      	pingdom = BackendSettings.secrets.pingdom
+      	pingdom = BackendSettings.secrets.pingdom or return false
         %w[user password api_key].all? do |key|
           pingdom.send(:[], key).present?
         end
