@@ -22,11 +22,10 @@ module Sources
       PORT = 8649
 
       def initialize
-        @url_builder = GangliaUrlBuilder.new(BackendSettings.ganglia.url)
       end
 
       def available?
-        BackendSettings.ganglia.enabled?
+        cc(:plugins).ganglia?
       end
 
       def get(options = {})
@@ -34,7 +33,6 @@ module Sources
         to      = (options[:to] || Time.now).to_i
         widget  = Widget.find(options.fetch(:widget_id))
         targets = targetsArray(widget.settings.fetch(:targets))
-        source  = options[:source]
 
         targets = targets.reject(&:blank?)
         ganglia_datapoints = request_datapoints(targets, from, to)
@@ -64,6 +62,10 @@ module Sources
 
       private
 
+      def url_builder
+        @url_builder ||= GangliaUrlBuilder.new(cc(:plugins).ganglia.url)
+      end
+
       def parse_targets(xml)
         targets = []
         source = XML::Parser.string(xml)
@@ -79,8 +81,8 @@ module Sources
       end
 
       def request_available_targets
-        Rails.logger.debug("Requesting available targets from #{BackendSettings.ganglia.host}:#{PORT} ...")
-        client = TCPSocket.open(BackendSettings.ganglia.host, PORT)
+        Rails.logger.debug("Requesting available targets from #{cc(:plugins).ganglia.host}:#{PORT} ...")
+        client = TCPSocket.open(cc(:plugins).ganglia.host, PORT)
         result = ""
         while line = client.gets
           result << line.chop
@@ -92,7 +94,7 @@ module Sources
       def request_datapoints(targets, from, to)
         result = []
         targets.each do |target|
-          hash = @url_builder.datapoints_url(target, from, to)
+          hash = url_builder.datapoints_url(target, from, to)
           Rails.logger.debug("Requesting datapoints from #{hash[:url]} with params #{hash[:params]} ...")
           response = ::HttpService.request(hash[:url], :params => hash[:params])
           if response == "null"

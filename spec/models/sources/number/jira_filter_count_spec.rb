@@ -9,12 +9,8 @@ describe Sources::Number::JiraFilterCount do
   }
 
   before do
-    BackendSettings.stubs(:jira).returns(
-      OpenStruct.new(
-        url: "http://localhost",
-        user: "user",
-        password: "password"
-      )
+    allow(cc(:plugins)).to receive(:jira).and_return(
+      OpenStruct.new(url: URI.parse("http://localhost"), user: "user", password: "password")
     )
   end
 

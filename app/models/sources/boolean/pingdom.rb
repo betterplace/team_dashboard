@@ -4,7 +4,7 @@ module Sources
     class Pingdom < Sources::Boolean::Base
 
       def available?
-        BackendSettings.pingdom.enabled?
+        cc(:plugins).pingdom?
       end
 
       def custom_fields

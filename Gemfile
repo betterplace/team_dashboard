@@ -23,6 +23,9 @@ gem "faraday_middleware"
 gem "multi_xml"
 gem "libxml-ruby"
 
+gem 'complex_config', github: 'flori/complex_config', ref: 'ffb286c70a206fab017aa975a290b69867744dea', require: 'complex_config/shortcuts'
+gem 'tins', require: 'tins/xt'
+
 # see app/model/sources/number/jenkins_game.rb
 gem "nokogiri"
 
@@ -30,12 +33,12 @@ gem "nokogiri"
 gem "newrelic_api"
 
 # assets
-gem "therubyracer"
+gem "therubyracer", '0.12.1'
 gem "uglifier"
 
 group :test, :development do
-  gem "debugger"
-  gem "rspec-rails"
+  gem "byebug"
+  gem "rspec-rails", '~> 2.99'
   gem "factory_girl_rails"
   gem "mocha", :require => false
 end

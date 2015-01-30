@@ -3,7 +3,7 @@ module Sources
     class PingdomResponse < Sources::Number::Base
 
       def available?
-        BackendSettings.pingdom.enabled?
+        cc(:plugins).pingdom?
       end
 
       def supports_target_browsing?
