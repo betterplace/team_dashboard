@@ -15,8 +15,8 @@ gem "json"
 
 # on windows replace with thin gem
 #gem "unicorn"
-gem "thin"
-gem "foreman"
+#gem "thin"
+#gem "foreman"
 
 gem "faraday"
 gem "faraday_middleware"
@@ -34,7 +34,7 @@ gem "therubyracer"
 gem "uglifier"
 
 group :test, :development do
-  gem "debugger"
+  gem "byebug"
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "mocha", :require => false
