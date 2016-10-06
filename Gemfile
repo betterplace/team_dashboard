@@ -14,7 +14,8 @@ gem 'sqlite3'
 gem "json"
 
 # on windows replace with thin gem
-#gem "unicorn"
+gem "unicorn", "~> 4.0"
+gem "unicorn_relay"
 #gem "thin"
 #gem "foreman"
 
