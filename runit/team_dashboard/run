@@ -1,10 +1,12 @@
 #!/bin/sh
 
 export HOME="/home/my"
-. "$HOME/.profile"
 export RAILS_ENV="production"
 export RACK_PORT=3000
+export APP="$HOME/scm/team_dashboard"
+export PID_FILE="$APP/tmp/pids/unicorn.pid"
 
-cd "$HOME/scm/team_dashboard"
+. "$HOME/.profile"
+cd $APP
 exec 2>&1
-exec env chpst -u my bundle exec foreman start
+exec env chpst -u my bundle exec unicorn_relay unicorn -c config/unicorn_config.rbkkkkkkkk
