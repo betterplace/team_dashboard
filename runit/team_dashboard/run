@@ -9,4 +9,4 @@ export PID_FILE="$APP/tmp/pids/unicorn.pid"
 . "$HOME/.profile"
 cd $APP
 exec 2>&1
-exec env chpst -u my bundle exec unicorn_relay unicorn -c config/unicorn_config.rbkkkkkkkk
+exec env chpst -u my bundle exec unicorn_relay unicorn -c config/unicorn_config.rb

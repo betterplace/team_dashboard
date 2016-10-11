@@ -2,7 +2,7 @@
 # For details look into betterplace/ansible-repo/roles/unicorn/main.yml
 
 unicorn_app_folder = "."
-pid_file = "#{unicorn_app_folder}/shared/pids/unicorn.pid" # Where to drop a pidfile
+pid_file = "#{unicorn_app_folder}/tmp/pids/unicorn.pid" # Where to drop a pidfile
 
 pid pid_file
 
